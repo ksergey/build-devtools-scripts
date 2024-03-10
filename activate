@@ -1,0 +1,16 @@
+function activate {
+    local baseDir="$( realpath -e -- "$( dirname -- "${BASH_SOURCE[0]}"; )"; )"
+
+    export PS1="($(basename "${baseDir}")) ${PS1}"
+
+    export MANPATH="${baseDir}/share/man:${MANPATH}"
+    export LD_LIBRARY_PATH="${baseDir}/lib64:${baseDir}/lib:${LD_LIBRARY_PATH}"
+    export PATH="${baseDir}/bin:${PATH}"
+    export INFOPATH="${baseDir}/share/info:${INFOPATH}"
+    export CXX="${baseDir}/bin/g++"
+    export CC="${baseDir}/bin/gcc"
+    export AR="${baseDir}/bin/gcc-ar"
+    export RANLIB="${baseDir}/bin/gcc-ranlib"
+}
+
+activate
